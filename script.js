@@ -16,17 +16,6 @@ const dummyTransactions = [
 
 let transactions = dummyTransactions;
 
-// LocalStorage is not enabled in CodePen for security reasons
-// const localStorageTransactions = JSON.parse(
-//   localStorage.getItem("transactions")
-// );
-// let transactions =
-//   localStorageTransactions !== null ? localStorageTransactions : [];
-
-// function updateLocaleStorage() {
-//   localStorage.setItem("transactions", JSON.stringify(transactions));
-// }
-
 function showNotification() {
   notification.classList.add("show");
   setTimeout(() => {
@@ -51,8 +40,7 @@ function addTransaction(e) {
     transactions.push(transaction);
     addTransactionDOM(transaction);
     updateValues();
-    // updateLocaleStorage();
-    text.value = "";
+   text.value = "";
     amount.value = "";
   }
 }
@@ -91,11 +79,8 @@ function updateValues() {
 
 function removeTransaction(id) {
   transactions = transactions.filter((transaction) => transaction.id !== id);
-  // updateLocaleStorage();
   init();
 }
-
-// Init
 function init() {
   list.innerHTML = "";
   transactions.forEach(addTransactionDOM);
